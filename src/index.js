@@ -4,12 +4,15 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './index.css';
 import App from './App';
 import Article from './ArticleApp';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={App} />
+            <Route path="/main" component={App} />
+            <Route path="/sub" component={App} />
             <Route path="/article" component={Article} />
         </Switch>
     </BrowserRouter>, 
