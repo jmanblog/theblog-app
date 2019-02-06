@@ -1,0 +1,12 @@
+.Menu-header {
+    background-color: darkslategrey;
+    min-height: 100%;
+    padding: 20px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }

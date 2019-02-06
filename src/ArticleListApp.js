@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Articlelist.css';
 
 class ArticleList extends Component {
     constructor(props){
@@ -40,20 +41,19 @@ class ArticleList extends Component {
                 let imageUrl = window.location.origin + "/article/" + dataId.articleImage;
                 let articleUrl = window.location.origin + "/article/" + dataId.articleShort.trim();
                 articleRows.push(
-                    <a href={articleUrl}>
-                    <div className="ArticleLink">
-                    <h1>{dataId.articleTitle}</h1>
-                    <img src={imageUrl} alt={dataId.articleShort} height="200px"></img>
-                    <p>{dataId.articleContent}</p>
+                    <div class="jumbotron">
+                    <h1 class="display-4">{dataId.articleTitle}</h1>
+                    <p class="lead">{dataId.articleContent}</p>
+                    <hr class="my-4" />
+                    <p>{dataId.articleShort}</p>
+                    <a class="btn btn-info btn-lg" href={articleUrl} role="button">Read more...</a>
                     </div>
-                    </a>
                 );
             }
 
             return (
                 <div className="ArticleList" id="Article">
-                <header className="App-header">
-                <h1>Artikkelilista</h1>
+                <header className="ArticleList-header">
                 {articleRows}
                 </header>
                 </div>

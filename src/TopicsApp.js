@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Menu.css';
 
 class Topics extends Component {
     constructor(props){
@@ -41,22 +42,25 @@ class Topics extends Component {
                 let subTopicTitle = dataId.subTopicName + " (" + dataId.articleCount + ")";
                 
                 if (previousMainTopicName !== dataId.mainTopicName) {
+                    myRows.push( <br></br> );
                     myRows.push(
-                        <h2><a href={mainTopicUrl}>{dataId.mainTopicName}</a></h2>
+                        <a href={mainTopicUrl} role="button" class="btn btn-info btn-lg">{dataId.mainTopicName}</a>
                     );
                 }                     
                 
                 myRows.push(
-                    <p><a href={subTopicUrl}>{subTopicTitle}</a></p>
+                    <a href={subTopicUrl} role="button" class="btn btn-outline-light btn-sm">{subTopicTitle}</a>
                 );
 
                 previousMainTopicName = dataId.mainTopicName;
             }
 
             return (
-                <div className="App" id="TopicsApp">
-                <header className="App-header">
-                    {myRows}
+                <div className="Menu" id="TopicsApp">
+                <header className="Menu-header">
+                <nav class="nav flex-column">
+                {myRows}
+                </nav>
                 </header>
                 </div>
             );

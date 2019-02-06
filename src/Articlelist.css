@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: dimgray !important;
+    width: 80% !important;
+}
+
+.ArticleList {
+    position: relative;
+    left: 200px;
+}

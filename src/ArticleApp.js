@@ -46,7 +46,7 @@ class Article extends Component {
                 <div className="Article" id="Article">
                 <header className="App-header">
                 <h1>{myData[0].articleTitle}</h1>
-                <img src={myData[0].articleImage} alt={myData[0].articleTitle} height="200px"/>
+                <img src={myData[0].articleImage} alt={myData[0].articleTitle} />
                 <div>{myData[0].articleContent}</div>
                 </header>
                 </div>

@@ -10,10 +10,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-        <h1>Frontpage</h1>
-        <a href="articles">Articles</a>
+      <h1 className="App-title">The Journeyman Blog</h1>
         <Topics />
+        <header className="App-header">
         <ArticleList locationData={this.props.location} />
         </header>
       </div>
