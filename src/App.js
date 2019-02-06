@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Topics from './TopicsApp';
 import ArticleList from './ArticleListApp';
+import Navbar from './NavbarApp';
 
 class App extends Component {
   render() {
@@ -9,13 +9,16 @@ class App extends Component {
     console.log(this.props.location);
 
     return (
-      <div className="App">
-      <h1 className="App-title">The Journeyman Blog</h1>
-        <Topics />
+      <span>
+      <div className="Navigation">
+        <Navbar />
+      </div>
+      <div className="App">  
         <header className="App-header">
         <ArticleList locationData={this.props.location} />
         </header>
       </div>
+      </span>
     );
   }
 }

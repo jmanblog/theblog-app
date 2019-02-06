@@ -38,15 +38,34 @@ class ArticleList extends Component {
 
             for (var i = 0; i < articleData.length; i++) {
                 let dataId = articleData[i];
-                let imageUrl = window.location.origin + "/article/" + dataId.articleImage;
+                let imageUrl = window.location.origin + "/article/icon/" + dataId.articleImage;
                 let articleUrl = window.location.origin + "/article/" + dataId.articleShort.trim();
+                let articleDate = new Date (dataId.articleDate);
+                let formattedDate = articleDate.toDateString();
+                let articleDescription = dataId.articleShort.trim() + ", " + formattedDate;
+                let articleContent = dataId.articleContent.substr(0, 600) + "...";
+                function Component() {
+                    return <div dangerouslySetInnerHTML={{__html: articleContent }} />;
+                }
+
                 articleRows.push(
-                    <div class="jumbotron">
-                    <h1 class="display-4">{dataId.articleTitle}</h1>
-                    <p class="lead">{dataId.articleContent}</p>
-                    <hr class="my-4" />
-                    <p>{dataId.articleShort}</p>
-                    <a class="btn btn-info btn-lg" href={articleUrl} role="button">Read more...</a>
+                    <div class="jumbotron" id={dataId.articleShort.trim()}>
+                        <a className="article-title" href={articleUrl}>
+                        <h1 class="article-topic">{dataId.articleTitle}</h1>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img className="list-image" src={imageUrl} alt={dataId.articleShort}></img>
+                                    </td>
+                                    <td>
+                                        <p class="lead">{Component()}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            </a>
+                            <hr />
+                            <p className="lead">{articleDescription}</p>
+                        <a class="btn btn-outline-info btn-sm" href={articleUrl} role="button">Read entire article...</a>
                     </div>
                 );
             }

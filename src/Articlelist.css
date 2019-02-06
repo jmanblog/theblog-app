@@ -1,9 +1,37 @@
 .jumbotron {
-    background-color: dimgray !important;
-    width: 80% !important;
+    background-color: #282c34;
+    margin: 20px;
 }
 
-.ArticleList {
-    position: relative;
-    left: 200px;
+.list-image {
+    margin-right: 1em;
+    width: 12vw;
+}
+
+.article-topic {
+    font-size: 4vw;
+}
+.article-title:link {
+    color: whitesmoke;
+}
+
+.article-title:visited {
+    color: whitesmoke;
+}
+
+.article-title:hover {
+    color: lightsteelblue;
+    text-decoration: none;
+}
+
+.jumbotron hr {
+    border-top-color: darkslategray;
+}
+
+.jumbotron th, td {
+    vertical-align: top;
+  }
+
+.lead {
+    font-size: 1.5vw;
 }

@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './index.css';
 import App from './App';
 import Article from './ArticleApp';
+import Contact from './ContactApp';
+import Privacy from './PrivacyApp';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -14,6 +16,8 @@ ReactDOM.render(
             <Route path="/main" component={App} />
             <Route path="/sub" component={App} />
             <Route path="/article" component={Article} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/privacy" component={Privacy} />
         </Switch>
     </BrowserRouter>, 
         document.getElementById('root')

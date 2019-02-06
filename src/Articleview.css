@@ -1,0 +1,29 @@
+.Article {
+    padding: 20px;
+    background-color: #282c34;
+
+}
+
+.Article h1 {
+    padding: 20px;
+    position: absolute;
+    top: 20px;
+    background-color: cadetblue;
+    max-width: 50%;
+    font-size: 4vw;
+}
+
+.Article-image {
+    width: 100%;
+}
+
+.Article-text {
+    padding: 20px;
+    position: absolute;
+    top: 60%;
+    left: 12vw;
+    background-color: cadetblue;
+    max-width: 78vw;
+    font-size: 1em;
+
+}
