@@ -35,3 +35,18 @@
 .lead {
     font-size: 1.5vw;
 }
+
+.sortButton {
+    margin: 2px;
+}
+
+#sorter {
+    position: fixed;
+    right: 20px;
+    bottom: 20px; 
+    z-index: 999999;
+}
+
+#dropdownMenuButton {
+    min-width: 16vw;
+}

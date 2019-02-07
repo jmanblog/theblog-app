@@ -5,8 +5,48 @@ class ArticleList extends Component {
     constructor(props){
         super(props);
         this.state = { loaded: false, data: null};
+        this.handleClickDateSorter = this.handleClickDateSorter.bind(this);
+        this.handleClickTitleSorter = this.handleClickTitleSorter.bind(this);
     }
     
+    handleClickDateSorter() {
+        this.setState(state => ({
+          sortDesc: !state.sortDesc,
+          sorter: "articleDate"
+        }));
+        let buttonText = "Date ";
+        let dropDownText = "Sorted: Date ";
+        if (this.state.sortDesc) {
+            buttonText = buttonText + "(newest)";
+            dropDownText = dropDownText + "(oldest)";
+        }
+        else { 
+            buttonText = buttonText + "(oldest)";
+            dropDownText = dropDownText + "(newest)";
+        }
+        document.getElementById("btn-dateSorter").innerHTML=buttonText;
+        document.getElementById("dropdownMenuButton").innerHTML=dropDownText;
+      }
+
+    handleClickTitleSorter() {
+        this.setState(state => ({
+            sortDesc: !state.sortDesc,
+            sorter: "articleTitle"
+        }));
+        let buttonText = "Title ";
+        let dropDownText = "Sorted: Title ";
+        if (this.state.sortDesc) {
+            buttonText = buttonText + "(ascending)";
+            dropDownText = dropDownText + "(descending)";
+        }
+        else { 
+            buttonText = buttonText + "(descending)";
+            dropDownText = dropDownText + "(ascending)";
+        }
+        document.getElementById("btn-titleSorter").innerHTML=buttonText;
+        document.getElementById("dropdownMenuButton").innerHTML=dropDownText;
+    }
+      
     componentDidMount() {
         let articlelistState = this;
         let componentUrl = this.props.locationData.pathname;
@@ -21,7 +61,7 @@ class ArticleList extends Component {
                 }
             })
             .then(function(articleJson) {
-                articlelistState.setState({ loaded: true, data: articleJson, success: fetchSuccess });
+                articlelistState.setState({ loaded: true, data: articleJson, success: fetchSuccess, sorter: "articleDate", sortDesc: true,  });
         });
     }
   
@@ -45,9 +85,20 @@ class ArticleList extends Component {
                     </div>
                     )
             } else {
+                //sort listed articles by sort options in this.state
+                function sortByKey(array, key) {
+                    return array.sort(function(a, b) {
+                        var x = a[key]; var y = b[key];
+                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                    });
+                }
                 let articleData = this.state.data;
+                articleData = sortByKey(articleData, this.state.sorter);
+                if (this.state.sortDesc) { articleData.reverse(); }
+                console.log(articleData);
+                                
                 let articleRows = [];
-
+                //generate listed articles
                 for (var i = 0; i < articleData.length; i++) {
                     let dataId = articleData[i];
                     let imageUrl = window.location.origin + "/article/icon/" + dataId.articleImage;
@@ -83,11 +134,24 @@ class ArticleList extends Component {
                 }
 
                 return (
-                    <div className="ArticleList" id="Article">
-                    <header className="ArticleList-header">
-                    {articleRows}
-                    </header>
-                    </div>
+                    <span>
+                        <div className="ArticleList" id="Article">
+                            <header className="ArticleList-header">
+                                
+                            <div class="dropdown" id="sorter">
+                            <button class="btn btn-info dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort by...
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" id="btn-dateSorter" onClick={this.handleClickDateSorter}>Date</a>
+                            <a class="dropdown-item" href="#" id="btn-titleSorter" onClick={this.handleClickTitleSorter}>Title</a>
+                            </div>
+                            </div>                                
+                                
+                            {articleRows}
+                            </header>
+                        </div>
+                    </span>
                 );
             }
         }

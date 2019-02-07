@@ -6,6 +6,7 @@ import App from './App';
 import Article from './ArticleApp';
 import Contact from './ContactApp';
 import Privacy from './PrivacyApp';
+import Mistake from './ErrorApp';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route path="/article" component={Article} />
             <Route path="/contact" component={Contact} />
             <Route path="/privacy" component={Privacy} />
+            <Route path="*" component={Mistake} />
         </Switch>
     </BrowserRouter>, 
         document.getElementById('root')

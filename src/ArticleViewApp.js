@@ -54,12 +54,15 @@ class ArticleView extends Component {
                 }
         
                 return (
+                    <span>
                     <div className="Article" id="Article">
-                    <h1>{myData[0].articleTitle}</h1>
                     <img className="Article-image" src={myData[0].articleImage} alt={myData[0].articleTitle} />
-                    <div className="Article-text">{Component()}</div>
                     </div>
-                );
+                    <div className="Article-text">{Component()}</div>
+                    <h1 className="Article-title">{myData[0].articleTitle}</h1>
+                    <div className="Top-banner"></div>
+                    </span>
+                    );
             }
         }
     }
