@@ -14,8 +14,6 @@ class Navbar extends Component {
             return response.json();
         })
         .then(function(topicJson) {
-            console.log("topicJson loaded:");
-            console.log(JSON.stringify(topicJson));
             componentState.setState({ loaded: true, data: topicJson });
         });
     }
@@ -29,11 +27,9 @@ class Navbar extends Component {
             )
         }
         else {
-            console.log("Props.location=");
             let myData = this.state.data;
             
             let myRows = [];
-            let previousMainTopicName = "";
             let buttonMain = [];
             let buttonList = [];
             let generateMainButton = false;
@@ -44,44 +40,45 @@ class Navbar extends Component {
                 let subTopicUrl = "/sub/" + dataId.subTopicName;
                 let subTopicTitle = dataId.subTopicName + " (" + dataId.articleCount + ")";
                 
+                //when reaching the end of mainTopic or end of all topics -> generate mainTopic button containing all subtopics
                 if (i + 1 !== myData.length) {
-                    console.log("Navbar: lista ei ole lopussa");
                     if (myData[i+1].mainTopicName !== dataId.mainTopicName) {
                         generateMainButton = true;
-                        console.log("Navbar: seuraava listan mainTopic eri kun nykyinen. generateMainButton = " + generateMainButton);
                     }
                 } else {
                     generateMainButton = true;
-                    console.log("Navbar: lista on lopussa. generateMainButton = " + generateMainButton);
                 }
                 
+                //regardless of maintopic, add button for subtopic for each i
                 buttonList.push(
-                    <a class="dropdown-item" href={subTopicUrl}>{subTopicTitle}</a>
+                    <a className="dropdown-item" href={subTopicUrl}>{subTopicTitle}</a>
                 );
 
+                //generate row for myRows by combining content of buttonList and new buttonMain
                 if (generateMainButton) {
 
                     buttonMain.push(
-                        <a href={mainTopicUrl} class="btn btn-info btn-lg" role="button">{dataId.mainTopicName}</a>
-                        //<button type="button" class="btn btn-info btn-lg">{dataId.mainTopicName}</button>
+                        <a href={mainTopicUrl} className="btn btn-info btn-lg" role="button">{dataId.mainTopicName}</a>
                     );
                     buttonMain.push(
-                        <button type="button" class="btn btn-info btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
+                        <button type="button" className="btn btn-info btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span className="sr-only">Toggle Dropdown</span>
                         </button>
                     )
 
                     myRows.push(
                         <span>
-                            <div class="btn-group">
+                            <div className="btn-group">
                             {buttonMain}
-                                <div class="dropdown-menu">
+                                <div className="dropdown-menu">
                                 {buttonList}
                                 </div>
                             </div>
                         </span>
                     );
 
+                    //reset rows to be pushed for next mainTopic
+                    //myRows now contains all necessary objects for current mainTopic
                     buttonMain = [];
                     buttonList = [];
                     generateMainButton = false;
@@ -90,12 +87,11 @@ class Navbar extends Component {
             }
 
             return (
-                <div class="btn-group">
-                
-                <span className="btn-main"><a class="btn btn-outline-light btn-lg" role="button" href="/">JManBlog</a></span>
+                <div className="btn-group">
+                <span className="btn-main"><a className="btn btn-outline-light btn-lg" role="button" href="/">TheBlog</a></span>
                 {myRows}
-                <span className="btn-main"><a href="/contact" class="btn btn-secondary btn-lg" role="button">Contact</a></span>
-                <span className="btn-main"><a href="/privacy" class="btn btn-secondary btn-lg" role="button">Privacy</a></span>
+                <span className="btn-main"><a href="/contact" className="btn btn-secondary btn-lg" role="button">Contact</a></span>
+                <span className="btn-main"><a href="/privacy" className="btn btn-secondary btn-lg" role="button">Privacy</a></span>
                 
                 </div>
             );
