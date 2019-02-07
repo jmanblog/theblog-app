@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Articleview.css';
 import Navbar from './NavbarApp';
 
 class Contact extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {isToggleOn: true};
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }));
-  }
 
   render() {
     return (
@@ -25,14 +13,16 @@ class Contact extends Component {
       </div>
       <div className="App">  
         <header className="App-header">
-
-                <div className="Article" id="Article">
-                <h1>Contact information</h1>
-                <img className="Article-image" src="contact.jpg" alt="Contact information" />
-                <button className="btn btn-info" onClick={this.handleClick} aria-pressed={this.state.isToggleOn ? 'true' : 'false'}>Toggler
-                  
-                </button>
-                </div>
+          <div className="Article" id="Article">
+            <img className="Article-image" src="contact.jpg" alt="Contact information" />
+          </div>
+          <div className="Article-text">
+            <h2>GitHub</h2>
+            <p>Frontend: <a className="Article-link" href="https://github.com/jmanblog/theblog-app">jmanblog/theblog-app</a></p>
+            <p>Backend: <a className="Article-link" href="https://github.com/jmanblog/theblog">jmanblog/theblog</a></p>
+          </div>
+          <h1 className="Article-title">Here there be some information</h1>
+          <div className="Top-banner"></div>
         </header>
       </div>
       </span>

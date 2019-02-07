@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './NavbarApp';
 import ArticleView from './ArticleViewApp';
-import ArticleList from './ArticleListApp';
 
 class App extends Component {
   render() {

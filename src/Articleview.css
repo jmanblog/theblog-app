@@ -30,6 +30,21 @@
 
 }
 
+.Article-text a:link {
+    text-decoration: none;
+    color: lightsteelblue;
+}
+
+.Article-text a:visited {
+    text-decoration: none;
+    color: lightsteelblue;
+}
+
+.Article-text a:hover {
+    color: black;
+    background-color: darkslategray
+}
+
 .Top-banner {
     position: fixed;
     min-width: 100%;

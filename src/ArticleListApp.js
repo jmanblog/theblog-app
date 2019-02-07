@@ -138,13 +138,13 @@ class ArticleList extends Component {
                         <div className="ArticleList" id="Article">
                             <header className="ArticleList-header">
                                 
-                            <div class="dropdown" id="sorter">
-                            <button class="btn btn-info dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="dropdown" id="sorter">
+                            <button className="btn btn-info dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sort by...
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" id="btn-dateSorter" onClick={this.handleClickDateSorter}>Date</a>
-                            <a class="dropdown-item" href="#" id="btn-titleSorter" onClick={this.handleClickTitleSorter}>Title</a>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button className="dropdown-item" id="btn-dateSorter" onClick={this.handleClickDateSorter}>Date</button>
+                            <button className="dropdown-item" id="btn-titleSorter" onClick={this.handleClickTitleSorter}>Title</button>
                             </div>
                             </div>                                
                                 
