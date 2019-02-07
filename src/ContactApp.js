@@ -18,14 +18,10 @@ class Contact extends Component {
   }
 
   render() {
-    console.log("App gives location:");
-    console.log(this.props.location);
-
-
     return (
       <span>
       <div className="Navigation">
-        <Navbar />
+      <Navbar locationData={this.props.location} />
       </div>
       <div className="App">  
         <header className="App-header">
