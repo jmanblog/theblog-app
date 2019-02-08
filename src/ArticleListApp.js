@@ -75,15 +75,18 @@ class ArticleList extends Component {
             if ((this.state.success === 204) || (this.state.success === 404)) {
                 let errorImage = window.location.origin + "/article/error.jpg";
                 return(
+                    <span>
                     <div className="Article" id="Article">
-                    <h1>Unfortunately there is nothing here</h1>
-                    <img className="Article-image" src={errorImage} alt="Something went wrong" />
+                        <img className="Article-image" src={errorImage} alt="Something went wrong" />
+                    </div>
                     <div className="Article-text">
                     <h2>This topic does not exist. Please try to click on some other topic...</h2>
                     <p>The problem is {this.state.success}.</p>
                     </div>
-                    </div>
-                    )
+                    <h1 className="Article-title">Unfortunately there is nothing here</h1>
+                    <div className="Top-banner"></div>
+                    </span>
+                )
             } else {
                 //sort listed articles by sort options in this.state
                 function sortByKey(array, key) {
